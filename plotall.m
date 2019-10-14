@@ -1,0 +1,24 @@
+clear all;
+close all;
+clc;
+errorrate=zeros(1,5000);
+errorrate1 = zeros(1,5000);
+errorrate2 = zeros(1,5000);
+errorrate3 = zeros(1,5000);
+eroorrate4 = zeros(1,5000);
+errorrate=dlmread('encoder.txt',' ');
+errorrate1=dlmread('edge_encoder_era0.01.txt',' ');
+errorrate2=dlmread('my_encoder_new_era0.01_1021.txt',' ');
+%errorrate3=dlmread('my_encoder_era0.1_1021.txt',' ');
+%errorrate4=dlmread('my_encoder_era0.01_1007.txt','');
+
+receivedamount=1000:5000;
+receivedamount=receivedamount/1000-1;
+figure(1);
+semilogy(receivedamount,errorrate(1000:end),'color','g'),hold on;
+semilogy(receivedamount,errorrate1(1000:end),'color','k'),hold on;
+semilogy(receivedamount,errorrate2(1000:end),'color','m'),hold off;
+%semilogy(receivedamount,errorrate3(1000:end)),hold on;
+%semilogy(receivedamount,errorrate3(1000:end)),hold off;
+%legend('CLT','RLT','PLT','my_encoder_1003','myencoder_923');
+legend('CLT','RLT','TLT');
